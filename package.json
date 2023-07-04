@@ -1,0 +1,23 @@
+{
+  "name": "rendu2os",
+  "version": "1.0.0",
+  "description": "Rendu 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CorentinKSTR/Rendu2OS.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CorentinKSTR/Rendu2OS/issues"
+  },
+  "homepage": "https://github.com/CorentinKSTR/Rendu2OS#readme",
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-plugin-react": "^7.32.2"
+  }
+}
