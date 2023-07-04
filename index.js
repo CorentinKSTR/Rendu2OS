@@ -1,56 +1,33 @@
-function fetchUrl(url) {
-    return fetch(url)
-      .then(response => response.json())
-      .then(data => data);
+async function fetchData(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data.records.map(record => record.fields);
+    } catch (error) {
+      console.error(`Une erreur s'est produite lors de la récupération des données depuis ${url}:`, error);
+      throw error;
+    }
   }
   
   async function getAllFestivals() {
-    try {
-      const url = 'https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=';
-      const data = await fetchUrl(url);
-      const festivals = data.records.map(record => record.fields);
-      return festivals;
-    } catch (error) {
-      console.error('Une erreur s\'est produite lors de la récupération des festivals :', error);
-      throw error;
-    }
+    const url = 'https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=';
+    return fetchData(url);
   }
   
   async function getFestivalsByRegion(region) {
-    try {
-      const url = `https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=&refine.region=${region}`;
-      const data = await fetchUrl(url);
-      const festivals = data.records.map(record => record.fields);
-      return festivals;
-    } catch (error) {
-      console.error('Une erreur s\'est produite lors de la récupération des festivals par région :', error);
-      throw error;
-    }
+    const url = `https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=&refine.region=${region}`;
+    return fetchData(url);
   }
   
   async function getFestivalsByDepartement(departement) {
-    try {
-      const url = `https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=&refine.departement=${departement}`;
-      const data = await fetchUrl(url);
-      const festivals = data.records.map(record => record.fields);
-      return festivals;
-    } catch (error) {
-      console.error('Une erreur s\'est produite lors de la récupération des festivals par département :', error);
-      throw error;
-    }
+    const url = `https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=&refine.departement=${departement}`;
+    return fetchData(url);
   }
   
   async function getFestivalsByDomaine(domaine) {
-    try {
-      const url = `https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=&refine.domaine=${domaine}`;
-      const data = await fetchUrl(url);
-      const festivals = data.records.map(record => record.fields);
-      return festivals;
-    } catch (error) {
-      console.error('Une erreur s\'est produite lors de la récupération des festivals par domaine :', error);
-      throw error;
-    }
+    const url = `https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=&refine.domaine=${domaine}`;
+    return fetchData(url);
   }
   
-  
   module.exports = { getAllFestivals, getFestivalsByRegion, getFestivalsByDepartement, getFestivalsByDomaine };
+  
