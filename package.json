@@ -18,9 +18,7 @@
   "homepage": "https://github.com/CorentinKSTR/Rendu2OS#readme",
   "devDependencies": {
     "eslint": "^8.44.0",
-    "eslint-plugin-react": "^7.32.2"
-  },
-  "dependencies": {
+    "eslint-plugin-react": "^7.32.2",
     "mocha": "^10.2.0"
   }
 }
